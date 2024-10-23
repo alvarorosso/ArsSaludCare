@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ARS Grupo 4 - Sistema de Seguros</title>
+    <link rel="stylesheet" href="../CSS/estilos.css">
+    <script>
+        function cargarPagina(pagina) {
+            if (pagina === 'inicio') {
+                document.getElementById('contenido').innerHTML = `
+                    <h2>Bienvenido al Sistema de Gestión de Seguros de ARS Grupo 4</h2>
+                    <p>Elige una opción del menú para comenzar.</p>
+                `;
+            } else {
+                fetch(pagina)
+                    .then(response => response.text())
+                    .then(data => {
+                        document.getElementById('contenido').innerHTML = data;
+                    })
+                    .catch(error => console.error('Error al cargar la página:', error));
+            }
+        }
+    </script>
+</head>
+<body>
+    <header>
+        <div class="logo-container">
+            <img src="../img/fondo.png" alt="Logo ARS Grupo 4" class="logo">
+        </div>
+        <h1>Ars Salud Care</h1>
+        <nav>
+            <ul>
+                <li><a href="#" onclick="cargarPagina('inicio')">Inicio</a></li>
+                <li><a href="#" onclick="cargarPagina('../Usuario/registro.html')">Registro</a></li>
+                <li><a href="#" onclick="cargarPagina('../Usuario/login.html')">Iniciar Sesión</a></li>
+                <li><a href="#" onclick="cargarPagina('../Poliza/poliza.html')">Crear Póliza</a></li>
+                <li><a href="#" onclick="cargarPagina('../Reclamacion/reclamacion.html')">Registrar Reclamación</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="contenido">
+        <!-- Aquí se cargará el contenido de las páginas -->
+        <h2>Bienvenido al Sistema de Gestión de Seguros de ARS Grupo 4</h2>
+        <p>Elige una opción del menú para comenzar.</p>
+    </section>
+
+    <footer>
+        <p>ARS Grupo 4 © 2024</p>
+    </footer>
+</body>
+</html>
